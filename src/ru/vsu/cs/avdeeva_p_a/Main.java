@@ -1,14 +1,16 @@
 package ru.vsu.cs.avdeeva_p_a;
 
 import java.util.Scanner;
+import java.util.Locale;
 
 public class Main {
 
     public static void main(String[] args) {
+        Locale.setDefault(Locale.ROOT);
 
-        double x = readDouble();
-        double n = readDouble();
-        double e = readDouble();
+        double x = readDoubleX();
+        double n = readDouble("n");
+        double e = readDouble("e");
 
         double sumN = countSequenceN(x, n);
         double sumE = countSequenceE(x, n, e);
@@ -19,30 +21,30 @@ public class Main {
 
     }
 
-    private static double readDouble() {
+    private static double readDoubleX() {
         Scanner sc = new Scanner(System.in);
         System.out.print("Input x : ");
         double x = sc.nextDouble();
 
-        if (x < -1) {
+        if (Math.abs(x) > 1) {
             System.out.println("Using the properties of the logarithm, 'x' cannot be less than -1");
+            System.exit(1);
         }
 
-        System.out.print("Input x : ");
-        double n = sc.nextDouble();
+        return x;
+    }
 
-        if (n < 0) {
-            System.out.println("'n' cannot be less than zero");
+    private static double readDouble(String text) {
+        Scanner sc = new Scanner(System.in);
+        System.out.printf("Input %s: ", text);
+        double num = sc.nextDouble();
+
+        if (num < 0) {
+            System.out.println("'n' 'e' cannot be less than zero");
+            System.exit(1);
         }
-
-        System.out.print("Input e : ");
-        double e = sc.nextDouble();
-
-        if (e < 0) {
-            System.out.println("'e' cannot be less than zero");
-        }
-
-        return sc.nextDouble();
+        
+        return num;
     }
 
     private static double countSequenceN(double x, double n) {
@@ -52,6 +54,7 @@ public class Main {
             double a = Math.pow(-1, i + 1) * Math.pow(x, i) / i;
             sumN += a;
         }
+        
         return sumN;
     }
 
@@ -65,6 +68,7 @@ public class Main {
                 sumE += a;
             }
         }
+        
         return sumE;
     }
 
@@ -74,8 +78,8 @@ public class Main {
 
     private static void printResult(double sumN, double sumE, double sumE01, double sumSimple) {
         System.out.println("The sum of 'n' terms is equal to " + sumN);
-        System.out.println("The sum of the members >e is equal to " + sumE);
-        System.out.println("The sum of the members >e/10 is equal to " + sumE01);
+        System.out.println("The sum of the members > e is equal to " + sumE);
+        System.out.println("The sum of the members > e/10 is equal to " + sumE01);
         System.out.println("The function is equal to " + sumSimple);
     }
 
