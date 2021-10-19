@@ -22,13 +22,20 @@ public class Main {
             System.out.println("Using the properties of the logarithm, 'x' cannot be less than -1");
         }
 
-        System.out.print("Input x : ");
+        System.out.print("Input n : ");
         double n = sc.nextDouble();
 
         if (n < 0) {
             System.out.println("'n' cannot be less than zero");
         }
-
+        
+        System.out.print("Input e : ");
+        double e = sc.nextDouble()
+            
+        if (e < 0 ) {
+            System.out.println("'e' cannot be less than zero");
+        }
+        
         return sc.nextDouble();
     }
 
