@@ -8,7 +8,7 @@ public class Main {
 
         double x = readDouble();
         double n = readDouble();
-        double e = Math.E;
+        double e = readDouble();
 
         countSequence(x, n, e);
     }
