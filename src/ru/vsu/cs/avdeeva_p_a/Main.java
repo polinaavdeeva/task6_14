@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         Locale.setDefault(Locale.ROOT);
 
-        double x = readDoubleX();
+        double x = readDoubleX("x");
         double n = readDouble("n");
         double e = readDouble("e");
 
@@ -21,9 +21,9 @@ public class Main {
 
     }
 
-    private static double readDoubleX() {
+    private static double readDoubleX(String text) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Input x : ");
+        System.out.printf("Input %s: ", text);
         double x = sc.nextDouble();
 
         if (Math.abs(x) > 1) {
